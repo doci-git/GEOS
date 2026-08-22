@@ -27,7 +27,12 @@
       pointer-events: auto;
       transform: translate(-50%, -50%);
     }
-    .project-card { cursor: pointer; }
+    .project-card {
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     .project-card-socials a {
       display: inline-flex;
       align-items: center;
@@ -48,6 +53,18 @@
     .project-card-socials a:hover {
       color: white;
       background: #bc9150;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.822);
+      opacity: .8;
+      pointer-events: none;
+    }
+    .project-card .project-label {
+      z-index: 2;
     }
   </style>
 </head>
@@ -207,21 +224,21 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card project-a">
+          <article class="project-card project-a" style="background-image:url('https://images.unsplash.com/photo-1504615755583-2916b52192a3?auto=format&fit=crop&w=1200&q=85')">
             <div class="project-card-socials" aria-label="Social Appartamento">
               <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
               <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
             </div>
             <div class="project-label"><span>Ristrutturazione</span><strong>Appartamento</strong></div>
           </article>
-          <article class="project-card project-b">
+          <article class="project-card project-b" style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85')">
             <div class="project-card-socials" aria-label="Social Bagno">
               <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
               <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
             </div>
             <div class="project-label"><span>Restyling</span><strong>Bagno</strong></div>
           </article>
-          <article class="project-card project-c">
+          <article class="project-card project-c" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85')">
             <div class="project-card-socials" aria-label="Social Interni">
               <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
               <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
