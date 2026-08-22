@@ -9,6 +9,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .project-card-socials {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, calc(-50% - 6px));
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .project-card.is-open .project-card-socials {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%);
+    }
+    .project-card { cursor: pointer; }
+    .project-card-socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 10px;
+      color: #203342;
+      background: rgba(255, 255, 255, .94);
+      font-size: 11px;
+      font-weight: 800;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, .18);
+    }
+    .project-card-socials svg { width: 18px; height: 18px; flex: 0 0 18px; }
+    .project-card-socials .instagram-link svg { color: #e1306c; }
+    .project-card-socials .facebook-link svg { color: #1877f2; }
+    .project-socials a { transition: color .25s ease, border-color .25s ease; }
+    .project-socials a:first-child svg { color: #e1306c; }
+    .project-socials a:last-child svg { color: #1877f2; }
+    .project-card-socials a:hover {
+      color: white;
+      background: #bc9150;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -167,14 +208,36 @@
 
         <div class="project-grid">
           <article class="project-card project-a">
+            <div class="project-card-socials" aria-label="Social Appartamento">
+              <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+              <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
+            </div>
             <div class="project-label"><span>Ristrutturazione</span><strong>Appartamento</strong></div>
           </article>
           <article class="project-card project-b">
+            <div class="project-card-socials" aria-label="Social Bagno">
+              <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+              <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
+            </div>
             <div class="project-label"><span>Restyling</span><strong>Bagno</strong></div>
           </article>
           <article class="project-card project-c">
+            <div class="project-card-socials" aria-label="Social Interni">
+              <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+              <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
+            </div>
             <div class="project-label"><span>Finiture</span><strong>Interni</strong></div>
           </article>
+        </div>
+        <div class="project-socials" aria-label="Seguici sui social" style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px">
+          <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid #cad0d2;color:#203342;font-size:13px;font-weight:800">
+            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+          <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid #cad0d2;color:#203342;font-size:13px;font-weight:800">
+            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>
+            Facebook
+          </a>
         </div>
       </div>
     </section>
