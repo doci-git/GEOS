@@ -202,26 +202,31 @@
           <p>Raccontaci cosa vuoi fare. Ti ricontatteremo per organizzare un sopralluogo e preparare una proposta su misura.</p>
 
           <div class="contact-details">
-            <p><span>Telefono</span><strong>+39 XXX XXX XXXX</strong></p>
+            <p><span>Telefono Aiet</span><strong>+39 331 702 6234</strong></p>
+            <p><span>Telefono Musa</span><strong>+39 389 888 3634</strong></p>
             <p><span>Email</span><strong>info@gruppogeos.it</strong></p>
             <p><span>Zona operativa</span><strong>Firenze e provincia</strong></p>
           </div>
         </div>
 
-        <form class="contact-form" onsubmit="return false;">
+        <form class="contact-form" action="https://formsubmit.co/zenitsoluzioni@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nuova richiesta dal sito Gruppo GEOS">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://doci-git.github.io/GEOS/thanks.html">
           <div class="field-row">
             <label>Nome
-              <input type="text" placeholder="Il tuo nome">
+              <input type="text" name="nome" placeholder="Il tuo nome" required>
             </label>
             <label>Telefono
-              <input type="tel" placeholder="+39">
+              <input type="tel" name="telefono" placeholder="+39" required>
             </label>
           </div>
           <label>Email
-            <input type="email" placeholder="nome@email.it">
+            <input type="email" name="email" placeholder="nome@email.it" required>
           </label>
           <label>Tipo di lavoro
-            <select>
+            <select name="tipo_lavoro" required>
               <option>Ristrutturazione completa</option>
               <option>Bagno / Cucina</option>
               <option>Cartongesso</option>
@@ -231,10 +236,10 @@
             </select>
           </label>
           <label>Descrivi il progetto
-            <textarea rows="5" placeholder="Scrivi qui qualche dettaglio..."></textarea>
+            <textarea name="progetto" rows="5" placeholder="Scrivi qui qualche dettaglio..." required></textarea>
           </label>
           <button class="btn btn-primary btn-full" type="submit">Invia richiesta</button>
-          <small>Demo grafica: per ricevere davvero i messaggi il modulo va collegato a email, WhatsApp o un servizio form.</small>
+          <small>Ti ricontatteremo al più presto per parlare del tuo progetto.</small>
         </form>
       </div>
     </section>

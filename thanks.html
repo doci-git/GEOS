@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="refresh" content="5;url=index.html" />
+  <title>Richiesta inviata | Gruppo GEOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: #203342;
+      background: linear-gradient(135deg, #f7f7f5 0%, #eef1ed 100%);
+      font-family: "Manrope", sans-serif;
+      text-align: center;
+    }
+    main { width: min(560px, 100%); }
+    img { width: 155px; margin: 0 auto 42px; }
+    .check {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #bc9150;
+      border-radius: 50%;
+      color: #bc9150;
+      font-size: 32px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 0 0 16px;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(32px, 6vw, 52px);
+      line-height: 1.1;
+    }
+    p { margin: 0 0 28px; color: #52616b; font-size: 17px; }
+    a {
+      display: inline-block;
+      padding: 14px 22px;
+      color: white;
+      background: #203342;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    a:hover { background: #bc9150; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="assets/logo-geos.png" alt="Logo Gruppo GEOS" />
+    <div class="check" aria-hidden="true">&#10003;</div>
+    <h1>Grazie per averci contattato.</h1>
+    <p>La tua richiesta e stata inviata correttamente. Ti ricontatteremo al piu presto.</p>
+    <a href="index.html">Torna alla home</a>
+  </main>
+  <script>
+    window.setTimeout(function () {
+      window.location.href = "index.html";
+    }, 5000);
+  </script>
+</body>
+</html>
