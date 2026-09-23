@@ -1,355 +1,1020 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gruppo GEOS - Impresa edile per ristrutturazioni, manutenzioni e soluzioni chiavi in mano." />
-  <title>Gruppo GEOS | Costruiamo valore, progettiamo il futuro</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gruppo GEOS | Ristrutturazioni, Cartongesso e Imbiancature a Firenze</title>
+  <meta name="description" content="Gruppo GEOS realizza ristrutturazioni complete, cartongesso, imbiancature, bagni e finiture a Firenze e provincia. Un unico referente dal sopralluogo alla consegna.">
+  <meta name="theme-color" content="#122f34">
+
+  <meta property="og:title" content="Gruppo GEOS | Ristrutturazioni a Firenze">
+  <meta property="og:description" content="Ristrutturazioni complete, cartongesso e imbiancature. Un unico referente dal sopralluogo alla consegna.">
+  <meta property="og:image" content="https://doci-git.github.io/GEOS/assets/logo-geos.png">
+
   <style>
-    .project-card-socials {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 3;
-      display: flex;
-      gap: 8px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-50%, calc(-50% - 6px));
-      transition: opacity .25s ease, transform .25s ease;
+    :root{
+      --navy:#17303a;
+      --navy-2:#0f252c;
+      --green:#1f5b52;
+      --green-soft:#eaf2ef;
+      --gold:#c39a57;
+      --gold-soft:#efe1c7;
+      --cream:#f6f3ed;
+      --paper:#ffffff;
+      --ink:#172126;
+      --muted:#6f787a;
+      --line:#e1e6e5;
+      --shadow:0 24px 70px rgba(15,37,44,.11);
+      --shadow-soft:0 16px 42px rgba(15,37,44,.075);
+      --radius:24px;
     }
-    .project-card.is-open .project-card-socials {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translate(-50%, -50%);
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:#fbfcfb;
+      line-height:1.6;
     }
-    .project-card {
-      cursor: pointer;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .container{width:min(1180px,92%);margin:auto}
+    .section{padding:104px 0}
+    .section-sm{padding:72px 0}
+    .section-head{max-width:790px;margin-bottom:48px}
+    .section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+    .section-head.center .eyebrow{justify-content:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      text-transform:uppercase;letter-spacing:1.8px;
+      color:var(--green);font-weight:850;font-size:12px;
+      margin-bottom:14px;
     }
-    .project-card-socials a {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 10px;
-      color: #203342;
-      background: rgba(255, 255, 255, .94);
-      font-size: 11px;
-      font-weight: 800;
-      box-shadow: 0 5px 16px rgba(0, 0, 0, .18);
+    .eyebrow:before{
+      content:"";width:28px;height:2px;background:var(--gold);
+      border-radius:5px;
     }
-    .project-card-socials svg { width: 18px; height: 18px; flex: 0 0 18px; }
-    .project-card-socials .instagram-link svg { color: #e1306c; }
-    .project-card-socials .facebook-link svg { color: #1877f2; }
-    .project-socials a { transition: color .25s ease, border-color .25s ease; }
-    .project-socials a:first-child svg { color: #e1306c; }
-    .project-socials a:last-child svg { color: #1877f2; }
-    .project-card-socials a:hover {
-      color: white;
-      background: #bc9150;
+    h1,h2,h3{line-height:1.08}
+    h1{
+      font-size:clamp(48px,7.2vw,84px);
+      letter-spacing:-3px;
+      color:var(--navy-2);
+      max-width:890px;
     }
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: rgba(0, 0, 0, 0.822);
-      opacity: .8;
-      pointer-events: none;
+    h2{
+      font-size:clamp(34px,5vw,56px);
+      letter-spacing:-1.8px;
+      color:var(--navy-2);
     }
-    .project-card .project-label {
-      z-index: 2;
+    h3{color:var(--navy-2)}
+    .lead{
+      font-size:19px;color:var(--muted);max-width:730px;
+    }
+    .btn{
+      min-height:52px;padding:0 23px;border-radius:12px;
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:1px solid transparent;font-weight:800;
+      transition:.25s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-dark{background:var(--navy-2);color:#fff;box-shadow:0 12px 30px rgba(15,37,44,.18)}
+    .btn-dark:hover{background:#183b45}
+    .btn-light{background:#fff;border-color:var(--line);color:var(--navy-2)}
+    .btn-gold{background:var(--gold);color:#fff}
+    .btn-outline-white{border-color:rgba(255,255,255,.28);color:#fff}
+    .tag{
+      display:inline-flex;align-items:center;
+      background:var(--green-soft);color:var(--green);
+      padding:7px 11px;border-radius:999px;font-size:12px;font-weight:800;
+    }
+
+    /* Header */
+    .topbar{
+      background:var(--navy-2);color:rgba(255,255,255,.72);
+      font-size:12px;
+    }
+    .topbar-row{
+      min-height:34px;display:flex;align-items:center;justify-content:space-between;
+      gap:20px;flex-wrap:wrap;
+    }
+    .topbar a{color:#fff;font-weight:700}
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(225,230,229,.9);
+    }
+    .nav{
+      height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px;
+    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:220px}
+    .brand img{
+      width:150px;height:auto;max-height:58px;object-fit:contain;
+    }
+    .brand-fallback{
+      display:none;font-size:20px;font-weight:900;color:var(--navy);
+    }
+    .nav-links{display:flex;align-items:center;gap:25px}
+    .nav-links>a:not(.btn){
+      font-size:14px;font-weight:750;color:#3a474b;
+    }
+    .nav-links>a:not(.btn):hover{color:var(--green)}
+    .menu-btn{
+      display:none;border:0;background:transparent;color:var(--navy);
+      font-size:28px;padding:4px;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 83% 14%,rgba(195,154,87,.19),transparent 24%),
+        linear-gradient(120deg,#f9fbfa 0%,#eef5f2 56%,#f8f3e9 100%);
+      padding:90px 0 72px;
+    }
+    .hero:after{
+      content:"";position:absolute;right:-140px;bottom:-240px;width:520px;height:520px;
+      border:1px solid rgba(31,91,82,.12);border-radius:50%;
+    }
+    .hero-grid{
+      position:relative;z-index:2;
+      display:grid;grid-template-columns:1.08fr .92fr;gap:72px;align-items:center;
+    }
+    .hero h1 span{color:var(--green)}
+    .hero .lead{margin:25px 0 29px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-trust{
+      display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;
+    }
+    .hero-trust span{
+      font-size:13px;font-weight:760;color:#3d5650;
+    }
+    .hero-panel{
+      position:relative;min-height:585px;border-radius:34px;overflow:hidden;
+      background:
+        radial-gradient(circle at 72% 16%,rgba(195,154,87,.28),transparent 28%),
+        linear-gradient(145deg,#17343b 0%,#0e252b 100%);
+      box-shadow:var(--shadow);
+    }
+    .hero-panel:before{
+      content:"";position:absolute;inset:0;
+      background:
+        linear-gradient(135deg,transparent 0 35%,rgba(255,255,255,.055) 35% 36%,transparent 36%),
+        linear-gradient(45deg,transparent 0 68%,rgba(255,255,255,.035) 68% 69%,transparent 69%);
+    }
+    .geom{
+      position:absolute;border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.045);
+    }
+    .geom.one{
+      width:50%;height:58%;left:8%;bottom:8%;
+      border-radius:120px 120px 18px 18px;
+    }
+    .geom.two{
+      width:35%;height:43%;right:8%;bottom:8%;border-radius:18px;
+    }
+    .geom.three{
+      width:24%;height:25%;right:11%;top:9%;
+      border-radius:70px 70px 15px 15px;background:rgba(195,154,87,.18);
+    }
+    .panel-logo{
+      position:absolute;top:34px;left:34px;
+      width:176px;background:rgba(255,255,255,.96);
+      padding:12px 15px;border-radius:14px;
+    }
+    .panel-card{
+      position:absolute;left:8%;right:8%;bottom:7%;
+      background:rgba(255,255,255,.96);border-radius:20px;padding:25px;
+      box-shadow:0 24px 54px rgba(0,0,0,.18);
+    }
+    .panel-card small{
+      color:var(--gold);font-size:11px;text-transform:uppercase;
+      letter-spacing:1.5px;font-weight:900;
+    }
+    .panel-card h3{font-size:29px;margin:7px 0 12px}
+    .panel-row{
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      color:var(--muted);font-size:13px;font-weight:650;
+    }
+
+    /* Trust bar */
+    .trustbar{background:#fff;border-bottom:1px solid var(--line)}
+    .trust-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+    .trust-item{padding:27px 24px;border-right:1px solid var(--line)}
+    .trust-item:last-child{border-right:0}
+    .trust-item span{
+      display:block;color:var(--gold);font-weight:900;font-size:12px;letter-spacing:1.3px;
+      margin-bottom:5px;
+    }
+    .trust-item strong{font-size:18px;color:var(--navy-2)}
+
+    /* About */
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:78px;align-items:start}
+    .about-card{
+      background:var(--cream);border:1px solid #ebe4d9;border-radius:28px;padding:35px;
+      position:sticky;top:125px;
+    }
+    .about-card img{width:190px;margin-bottom:23px}
+    .about-card p{color:var(--muted);font-size:15px}
+    .about-copy .lead{margin:20px 0}
+    .audiences{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+
+    /* Services */
+    .services{background:#f6f8f7}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:21px}
+    .service-card{
+      background:#fff;border:1px solid var(--line);border-radius:23px;padding:31px;
+      min-height:340px;transition:.25s ease;position:relative;overflow:hidden;
+    }
+    .service-card:after{
+      content:"";position:absolute;right:-50px;bottom:-80px;width:150px;height:150px;
+      border:1px solid rgba(31,91,82,.08);border-radius:50%;
+    }
+    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft)}
+    .service-num{font-size:12px;color:var(--gold);font-weight:900;letter-spacing:1.4px}
+    .service-card h3{font-size:27px;margin:22px 0 13px}
+    .service-card p{color:var(--muted);font-size:15px}
+    .service-card ul{list-style:none;margin-top:20px}
+    .service-card li{font-size:14px;padding:6px 0;color:#475250}
+    .service-card li:before{content:"✓";color:var(--green);font-weight:900;margin-right:9px}
+    .service-card.featured{
+      color:#fff;background:linear-gradient(145deg,var(--navy),var(--navy-2));
+      border-color:transparent;
+    }
+    .service-card.featured h3{color:#fff}
+    .service-card.featured p,.service-card.featured li{color:rgba(255,255,255,.72)}
+    .service-card.featured li:before{color:#e2be83}
+
+    /* Key service split */
+    .focus{background:var(--navy-2);color:#fff;overflow:hidden}
+    .focus h2{color:#fff}
+    .focus .lead{color:rgba(255,255,255,.7)}
+    .focus-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:center}
+    .focus-list{display:grid;gap:13px}
+    .focus-item{
+      border:1px solid rgba(255,255,255,.11);border-radius:18px;
+      padding:20px 22px;display:flex;gap:15px;background:rgba(255,255,255,.04);
+    }
+    .focus-icon{
+      flex:0 0 43px;height:43px;border-radius:12px;
+      background:rgba(195,154,87,.18);color:#e2be83;
+      display:grid;place-items:center;font-weight:900;
+    }
+    .focus-item b{display:block;color:#fff}
+    .focus-item p{color:rgba(255,255,255,.65);font-size:14px;margin-top:4px}
+
+    /* Process */
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .process-card{
+      border:1px solid var(--line);background:#fff;border-radius:21px;padding:29px;
+    }
+    .process-card strong{
+      color:#d7bd91;font-size:43px;display:block;line-height:1;
+    }
+    .process-card h3{font-size:20px;margin:16px 0 9px}
+    .process-card p{color:var(--muted);font-size:14px}
+
+    /* Portfolio */
+    .portfolio-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}
+    .project{
+      min-height:350px;border-radius:25px;overflow:hidden;position:relative;
+      border:1px solid var(--line);
+      background:linear-gradient(145deg,#d7dfdb,#f2eee5);
+    }
+    .project:nth-child(2){background:linear-gradient(145deg,#ede7dc,#9db3aa)}
+    .project:nth-child(3){background:linear-gradient(145deg,#91aba2,#f4eee3)}
+    .project-overlay{
+      position:absolute;inset:0;background:linear-gradient(to top,rgba(11,37,44,.72),transparent 58%);
+    }
+    .project-info{
+      position:absolute;left:23px;right:23px;bottom:22px;color:#fff;
+    }
+    .project-info h3{color:#fff;font-size:22px;margin-top:8px}
+    .project-info p{font-size:13px;color:rgba(255,255,255,.75);margin-top:4px}
+    .portfolio-note{
+      margin-top:22px;padding:17px 19px;border:1px dashed #c9d2cf;
+      border-radius:15px;color:var(--muted);font-size:13px;background:#fff;
+    }
+
+    /* Why */
+    .why{background:var(--cream)}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+    .why-cards{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .why-card{
+      background:#fff;border:1px solid #e9e2d6;border-radius:20px;padding:25px;
+    }
+    .why-card strong{display:block;color:var(--navy-2);font-size:18px;margin-bottom:7px}
+    .why-card p{color:var(--muted);font-size:14px}
+
+    /* Care */
+    .care-panel{
+      border:1px solid var(--line);border-radius:29px;padding:48px;
+      display:grid;grid-template-columns:1fr auto;gap:38px;align-items:center;
+      background:#fff;box-shadow:var(--shadow-soft);
+    }
+    .care-panel p{color:var(--muted);margin-top:11px;max-width:760px}
+
+    /* Contact */
+    .contact{
+      color:#fff;background:
+        radial-gradient(circle at 85% 20%,rgba(195,154,87,.2),transparent 25%),
+        linear-gradient(135deg,#17353d,#0d252b);
+    }
+    .contact h2{color:#fff}
+    .contact .lead{color:rgba(255,255,255,.7)}
+    .contact-grid{display:grid;grid-template-columns:.83fr 1.17fr;gap:70px;align-items:start}
+    .contacts{display:grid;gap:13px;margin-top:30px}
+    .contact-chip{
+      border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:15px 17px;
+      color:rgba(255,255,255,.78);font-size:14px;
+    }
+    .contact-chip b{color:#fff;display:block;margin-bottom:2px}
+    .contact-chip a{color:#fff}
+    .quote-form{
+      background:#fff;color:var(--ink);padding:33px;border-radius:27px;
+      box-shadow:0 28px 75px rgba(0,0,0,.22);
+    }
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:7px}
+    .field.full{grid-column:1/-1}
+    label{font-size:12px;font-weight:850;color:#465450}
+    input,select,textarea{
+      width:100%;background:#fbfcfb;border:1px solid var(--line);
+      border-radius:12px;padding:13px 14px;outline:none;color:var(--ink);
+    }
+    input:focus,select:focus,textarea:focus{border-color:#8ba9a0}
+    textarea{min-height:118px;resize:vertical}
+    .form-note{font-size:11px;color:var(--muted);margin-top:10px}
+
+    /* FAQ */
+    .faq{max-width:870px;margin:auto}
+    .faq-item{border-bottom:1px solid var(--line)}
+    .faq-q{
+      width:100%;border:0;background:transparent;padding:23px 0;
+      display:flex;justify-content:space-between;gap:20px;text-align:left;
+      font-weight:850;color:var(--navy-2);font-size:17px;
+    }
+    .faq-a{display:none;color:var(--muted);padding:0 0 22px}
+    .faq-item.active .faq-a{display:block}
+
+    /* Footer */
+    footer{background:#081d23;color:rgba(255,255,255,.67);padding:52px 0 26px}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .7fr .7fr;gap:42px}
+    .footer-logo{
+      width:190px;background:#fff;border-radius:13px;padding:11px 14px;margin-bottom:16px;
+    }
+    footer h4{color:#fff;margin-bottom:12px}
+    footer a{display:block;font-size:13px;margin:6px 0}
+    .footer-bottom{
+      margin-top:34px;padding-top:21px;border-top:1px solid rgba(255,255,255,.1);
+      display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px;
+    }
+
+    /* Floating WhatsApp */
+    .wa-floating{
+      position:fixed;right:20px;bottom:20px;z-index:950;
+      min-height:58px;padding:0 19px;border-radius:999px;
+      background:#25d366;color:#fff;font-weight:900;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      box-shadow:0 12px 34px rgba(0,0,0,.22);
+    }
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(16px);transition:.6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:980px){
+      .topbar{display:none}
+      .nav-links{
+        display:none;position:absolute;top:82px;left:0;right:0;
+        background:#fff;padding:25px;flex-direction:column;align-items:flex-start;
+        border-bottom:1px solid var(--line);box-shadow:0 16px 30px rgba(0,0,0,.06)
+      }
+      .nav-links.open{display:flex}
+      .menu-btn{display:block}
+      .hero-grid,.about-grid,.focus-grid,.why-grid,.contact-grid{grid-template-columns:1fr}
+      .about-card{position:static}
+      .services-grid{grid-template-columns:1fr 1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .portfolio-grid{grid-template-columns:1fr 1fr}
+      .portfolio-grid .project:first-child{grid-column:1/-1}
+      .care-panel{grid-template-columns:1fr}
+      .hero-panel{min-height:460px}
+    }
+
+    @media(max-width:660px){
+      .section{padding:74px 0}
+      .brand img{width:125px}
+      .hero{padding:56px 0 52px}
+      h1{letter-spacing:-1.9px}
+      .hero-panel{min-height:410px}
+      .panel-logo{width:135px;left:24px;top:24px}
+      .panel-card{left:6%;right:6%;padding:20px}
+      .trust-grid,.services-grid,.process,.portfolio-grid,.why-cards,.form-grid,.footer-grid{grid-template-columns:1fr}
+      .portfolio-grid .project:first-child{grid-column:auto}
+      .trust-item{border-right:0;border-bottom:1px solid var(--line)}
+      .trust-item:last-child{border-bottom:0}
+      .field.full{grid-column:auto}
+      .care-panel{padding:31px 23px}
+      .quote-form{padding:24px 19px}
+      .wa-floating{width:58px;padding:0;font-size:0}
+      .wa-floating:before{content:"WA";font-size:14px}
     }
   </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="#home" class="brand" aria-label="Gruppo GEOS">
-        <img src="assets/logo-geos.png" alt="Logo Gruppo GEOS" />
-      </a>
 
-      <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+<div class="topbar">
+  <div class="container topbar-row">
+    <span>Ristrutturazioni · Cartongesso · Imbiancature · Firenze e provincia</span>
+    <span>
+      <a href="tel:+393317026234">Aiet +39 331 702 6234</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="tel:+393898883634">Musa +39 389 888 3634</a>
+    </span>
+  </div>
+</div>
 
-      <nav class="main-nav">
-        <a href="#servizi">Servizi</a>
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand" aria-label="Gruppo GEOS">
+      <img src="https://doci-git.github.io/GEOS/assets/logo-geos.png" alt="Logo Gruppo GEOS"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="brand-fallback">GRUPPO GEOS</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#azienda">Azienda</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#metodo">Come lavoriamo</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#preventivo" class="btn btn-dark">Richiedi sopralluogo</a>
+    </nav>
+
+    <button class="menu-btn" aria-label="Apri menu" onclick="toggleMenu()">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Ristrutturazioni · Firenze e provincia</span>
+        <h1>Costruiamo valore.<br><span>Trasformiamo spazi.</span></h1>
+        <p class="lead">
+          Ristrutturazioni complete, cartongesso e imbiancature con un unico referente
+          che segue il lavoro dal sopralluogo alle finiture.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#preventivo" class="btn btn-dark">Richiedi un sopralluogo</a>
+          <a href="#servizi" class="btn btn-light">Scopri i servizi</a>
+        </div>
+
+        <div class="hero-trust">
+          <span>✓ Preventivi chiari</span>
+          <span>✓ Un unico referente</span>
+          <span>✓ Lavori organizzati per fasi</span>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Gruppo GEOS edilizia">
+        <div class="geom one"></div>
+        <div class="geom two"></div>
+        <div class="geom three"></div>
+
+        <div class="panel-logo">
+          <img src="https://doci-git.github.io/GEOS/assets/logo-geos.png" alt="Gruppo GEOS">
+        </div>
+
+        <div class="panel-card">
+          <small>Edilizia su misura</small>
+          <h3>Dalla demolizione alle finiture.</h3>
+          <div class="panel-row">
+            <span>Ristrutturazioni</span>
+            <span>Cartongesso</span>
+            <span>Imbiancature</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trustbar">
+    <div class="container trust-grid">
+      <div class="trust-item"><span>01</span><strong>Preventivi chiari</strong></div>
+      <div class="trust-item"><span>02</span><strong>Un unico referente</strong></div>
+      <div class="trust-item"><span>03</span><strong>Tempi e fasi concordati</strong></div>
+    </div>
+  </div>
+
+  <section class="section" id="azienda">
+    <div class="container about-grid">
+      <aside class="about-card reveal">
+        <img src="https://doci-git.github.io/GEOS/assets/logo-geos.png" alt="Gruppo GEOS">
+        <h3 style="font-size:28px;margin-bottom:13px">Un'impresa, un solo punto di riferimento.</h3>
+        <p>
+          Seguiamo interventi di ristrutturazione e finitura con un approccio pratico,
+          ordinato e trasparente.
+        </p>
+        <div class="audiences">
+          <span class="tag">Privati</span>
+          <span class="tag">Aziende</span>
+          <span class="tag">Strutture ricettive</span>
+          <span class="tag">Condomini</span>
+        </div>
+      </aside>
+
+      <div class="about-copy reveal">
+        <span class="eyebrow">Chi siamo</span>
+        <h2>Gestiamo il lavoro dall'inizio alla fine.</h2>
+        <p class="lead">
+          Gruppo GEOS trasforma spazi residenziali e professionali coordinando le principali
+          fasi del cantiere: demolizioni, ripristini, cartongesso, finiture e imbiancature.
+        </p>
+        <p class="lead" style="font-size:17px">
+          L'obiettivo è semplice: ridurre complicazioni e passaggi tra fornitori diversi,
+          mantenendo il cliente aggiornato e un'unica persona di riferimento durante il lavoro.
+        </p>
+
+        <div style="margin-top:28px">
+          <a href="#preventivo" class="btn btn-dark">Parla con Gruppo GEOS</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services" id="servizi">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">I nostri servizi</span>
+        <h2>Competenze coordinate per un risultato completo.</h2>
+        <p class="lead">
+          Il sito mette in primo piano le lavorazioni dove GEOS può esprimere maggiormente
+          organizzazione, qualità delle finiture e valore del cantiere.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card featured reveal">
+          <span class="service-num">01 / SERVIZIO PRINCIPALE</span>
+          <h3>Ristrutturazioni complete</h3>
+          <p>
+            Appartamenti, uffici e locali: dalla demolizione alle finiture, con coordinamento
+            delle principali lavorazioni.
+          </p>
+          <ul>
+            <li>Demolizioni e ricostruzioni</li>
+            <li>Bagni e cucine</li>
+            <li>Pavimenti e rivestimenti</li>
+            <li>Ripristini e finiture</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num">02 / CARTONGESSO</span>
+          <h3>Cartongesso su misura</h3>
+          <p>
+            Soluzioni pulite e funzionali per modificare gli ambienti e integrare illuminazione,
+            impianti e dettagli architettonici.
+          </p>
+          <ul>
+            <li>Pareti e contropareti</li>
+            <li>Controsoffitti</li>
+            <li>Velette e gole luce</li>
+            <li>Nicchie e librerie</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num">03 / IMBIANCATURA</span>
+          <h3>Imbiancature professionali</h3>
+          <p>
+            Preparazione dei fondi e finiture curate per appartamenti, uffici, attività,
+            facciate e parti comuni.
+          </p>
+          <ul>
+            <li>Interni ed esterni</li>
+            <li>Rasature e ripristini</li>
+            <li>Trattamenti antimuffa</li>
+            <li>Finiture decorative semplici</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num">04 / BAGNI & CUCINE</span>
+          <h3>Rifacimento bagni e cucine</h3>
+          <p>
+            Lavorazioni coordinate per rinnovare gli ambienti più tecnici della casa con
+            attenzione a impermeabilizzazioni e finiture.
+          </p>
+          <ul>
+            <li>Demolizioni</li>
+            <li>Impermeabilizzazioni</li>
+            <li>Ripristini sottofondi</li>
+            <li>Posa e finiture</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num">05 / FACCIATE</span>
+          <h3>Facciate e ripristini</h3>
+          <p>
+            Ripristino delle superfici ammalorate, preparazione fondi, rasature e tinteggiatura
+            esterna.
+          </p>
+          <ul>
+            <li>Stonacatura localizzata</li>
+            <li>Ripristini con malta</li>
+            <li>Rasature</li>
+            <li>Imbiancatura esterna</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal">
+          <span class="service-num">06 / CHIAVI IN MANO</span>
+          <h3>Soluzioni coordinate</h3>
+          <p>
+            Per i lavori più articolati organizziamo materiali, lavorazioni e fasi operative,
+            mantenendo un unico interlocutore.
+          </p>
+          <ul>
+            <li>Organizzazione del cantiere</li>
+            <li>Coordinamento lavorazioni</li>
+            <li>Aggiornamenti al cliente</li>
+            <li>Controllo finale</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section focus">
+    <div class="container focus-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color:#dec499">Ristrutturazioni chiavi in mano</span>
+        <h2>Non devi coordinare ogni lavorazione da solo.</h2>
+        <p class="lead" style="margin-top:18px">
+          Per una ristrutturazione completa, il valore non è soltanto eseguire bene una parete
+          o una finitura: è far funzionare insieme tutte le fasi del cantiere.
+        </p>
+        <div style="margin-top:27px">
+          <a href="#preventivo" class="btn btn-gold">Raccontaci il progetto</a>
+        </div>
+      </div>
+
+      <div class="focus-list reveal">
+        <div class="focus-item">
+          <div class="focus-icon">01</div>
+          <div><b>Sopralluogo e analisi</b><p>Valutiamo spazi, lavorazioni e criticità prima di definire il lavoro.</p></div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-icon">02</div>
+          <div><b>Preventivo comprensibile</b><p>Le principali lavorazioni vengono definite prima dell'avvio del cantiere.</p></div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-icon">03</div>
+          <div><b>Organizzazione delle fasi</b><p>Programmiamo le attività per ridurre sovrapposizioni e tempi morti.</p></div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-icon">04</div>
+          <div><b>Finiture e consegna</b><p>Controlliamo il risultato finale prima della chiusura del lavoro.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="metodo">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Il nostro metodo</span>
+        <h2>Dal sopralluogo alla consegna, sai sempre cosa succede.</h2>
+      </div>
+
+      <div class="process">
+        <article class="process-card reveal">
+          <strong>01</strong><h3>Sopralluogo</h3>
+          <p>Valutiamo lo spazio, le esigenze del cliente e le priorità del lavoro.</p>
+        </article>
+        <article class="process-card reveal">
+          <strong>02</strong><h3>Preventivo</h3>
+          <p>Definiamo lavorazioni, costi e principali condizioni in modo chiaro.</p>
+        </article>
+        <article class="process-card reveal">
+          <strong>03</strong><h3>Esecuzione</h3>
+          <p>Organizziamo il cantiere e manteniamo il cliente aggiornato sull'avanzamento.</p>
+        </article>
+        <article class="process-card reveal">
+          <strong>04</strong><h3>Consegna</h3>
+          <p>Controllo finale delle lavorazioni e chiusura ordinata dell'intervento.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="progetti">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Progetti</span>
+        <h2>Il lavoro parla attraverso i dettagli.</h2>
+        <p class="lead">
+          Qui vanno inserite fotografie vere dei vostri cantieri: sono l'elemento che può
+          aumentare di più la fiducia nel sito.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <article class="project reveal">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <span class="tag">Ristrutturazione</span>
+            <h3>Appartamento completo</h3>
+            <p>Inserire foto reale + zona + principali lavorazioni eseguite.</p>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <span class="tag">Cartongesso</span>
+            <h3>Controsoffitti e dettagli</h3>
+            <p>Inserire una realizzazione GEOS.</p>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <span class="tag">Imbiancatura</span>
+            <h3>Finiture interne</h3>
+            <p>Inserire una realizzazione GEOS.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- <div class="portfolio-note">
+        <strong>Nota prima della pubblicazione:</strong> sostituisci questi tre sfondi con fotografie reali.
+        Eviterei foto stock: per un'impresa edile i lavori autentici vendono molto più della grafica.
+      </div> -->
+    </div>
+  </section>
+
+  <section class="section why">
+    <div class="container why-grid">
+      <div class="reveal">
+        <span class="eyebrow">Perché GEOS</span>
+        <h2>Professionalità concreta, senza complicazioni inutili.</h2>
+        <p class="lead" style="margin-top:18px">
+          Un cantiere funziona meglio quando il cliente sa con chi parlare, cosa è stato
+          concordato e quale fase viene dopo.
+        </p>
+      </div>
+
+      <div class="why-cards reveal">
+        <div class="why-card"><strong>Chiarezza</strong><p>Preventivi comprensibili e lavorazioni definite.</p></div>
+        <div class="why-card"><strong>Affidabilità</strong><p>Organizzazione del cantiere e rispetto degli accordi.</p></div>
+        <div class="why-card"><strong>Qualità</strong><p>Attenzione alla preparazione delle superfici e alle finiture.</p></div>
+        <div class="why-card"><strong>Presenza</strong><p>Un referente diretto durante tutto il lavoro.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="care-panel reveal">
+        <div>
+          <span class="eyebrow">Dopo i lavori</span>
+          <h2 style="font-size:clamp(30px,4vw,45px)">Per la manutenzione c'è GEOS Care.</h2>
+          <p>
+            Gruppo GEOS segue i lavori importanti. GEOS Care completa il servizio con assistenza
+            e manutenzione continuativa per case, B&B e immobili.
+          </p>
+        </div>
+        <a href="https://doci-git.github.io/GEOS-Care-Premium/" target="_blank" rel="noopener" class="btn btn-light">
+          Scopri GEOS Care
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="preventivo">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color:#dfc497">Contatti</span>
+        <h2>Hai un progetto da realizzare?</h2>
+        <p class="lead" style="margin-top:18px">
+          Raccontaci cosa vuoi fare. Possiamo partire da foto e descrizione del lavoro e,
+          quando necessario, organizzare un sopralluogo.
+        </p>
+
+        <div class="contacts">
+          <div class="contact-chip"><b>Aiet</b><a href="tel:+393317026234">+39 331 702 6234</a></div>
+          <div class="contact-chip"><b>Musa</b><a href="tel:+393898883634">+39 389 888 3634</a></div>
+          <div class="contact-chip"><b>Email</b><a href="mailto:info@gruppogeos.it">info@gruppogeos.it</a></div>
+          <div class="contact-chip"><b>Zona operativa</b>Firenze e provincia</div>
+        </div>
+      </div>
+
+      <form class="quote-form reveal" id="quoteForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" placeholder="Il tuo nome" required>
+          </div>
+
+          <div class="field">
+            <label for="telefono">Telefono</label>
+            <input id="telefono" type="tel" placeholder="+39" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="nome@email.it">
+          </div>
+
+          <div class="field">
+            <label for="servizio">Tipo di lavoro</label>
+            <select id="servizio" required>
+              <option value="">Seleziona</option>
+              <option>Ristrutturazione completa</option>
+              <option>Cartongesso</option>
+              <option>Imbiancatura</option>
+              <option>Bagno / cucina</option>
+              <option>Facciata / ripristini</option>
+              <option>Altro lavoro edile</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="zona">Zona del lavoro</label>
+            <input id="zona" type="text" placeholder="Es. Firenze, Campo di Marte">
+          </div>
+
+          <div class="field full">
+            <label for="descrizione">Descrivi il progetto</label>
+            <textarea id="descrizione" placeholder="Es. appartamento da ristrutturare, metratura, lavori principali..."></textarea>
+          </div>
+
+          <div class="field full">
+            <button class="btn btn-dark" type="submit">Invia richiesta su WhatsApp</button>
+            <p class="form-note">
+              Il pulsante apre WhatsApp con il messaggio già compilato. Nessun dato viene salvato da questa pagina.
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">FAQ</span>
+        <h2>Domande frequenti.</h2>
+      </div>
+
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q">Fate ristrutturazioni complete?<span>+</span></button>
+          <div class="faq-a">Sì. Il sito presenta Gruppo GEOS come referente per ristrutturazioni complete e per il coordinamento delle principali lavorazioni del cantiere.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Posso richiedere solo cartongesso o imbiancatura?<span>+</span></button>
+          <div class="faq-a">Sì. È possibile richiedere anche una singola lavorazione senza dover effettuare una ristrutturazione completa.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Come ricevo il preventivo?<span>+</span></button>
+          <div class="faq-a">Dopo una prima descrizione del progetto e, quando necessario, un sopralluogo, vengono definite le lavorazioni e preparata la proposta economica.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">Lavorate anche con aziende, B&B e condomini?<span>+</span></button>
+          <div class="faq-a">Sì. Gruppo GEOS si rivolge a privati, aziende, strutture ricettive e condomini nell'area di Firenze e provincia.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">E per le piccole manutenzioni dopo i lavori?<span>+</span></button>
+          <div class="faq-a">Per l'assistenza continuativa è disponibile GEOS Care, il servizio separato dedicato alla manutenzione di case e immobili.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="https://doci-git.github.io/GEOS/assets/logo-geos.png" alt="Gruppo GEOS">
+        </div>
+        <p style="max-width:390px;font-size:13px">
+          Ristrutturazioni complete, cartongesso e imbiancature a Firenze e provincia.
+        </p>
+      </div>
+
+      <div>
+        <h4>Gruppo GEOS</h4>
         <a href="#azienda">Azienda</a>
+        <a href="#servizi">Servizi</a>
         <a href="#metodo">Come lavoriamo</a>
         <a href="#progetti">Progetti</a>
-        <a href="#contatti" class="nav-cta">Richiedi preventivo</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-overlay"></div>
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <span class="eyebrow">RISTRUTTURAZIONI · MANUTENZIONI · CHIAVI IN MANO</span>
-          <h1>Costruiamo valore.<br><span>Progettiamo il futuro.</span></h1>
-          <p>
-            Gruppo GEOS trasforma spazi residenziali e professionali con cura,
-            precisione e una gestione completa del cantiere.
-          </p>
-          <div class="hero-actions">
-            <a href="#contatti" class="btn btn-primary">Richiedi un sopralluogo</a>
-            <a href="#servizi" class="btn btn-secondary">Scopri i servizi</a>
-          </div>
-          <div class="hero-points">
-            <div><strong>01</strong><span>Preventivi chiari</span></div>
-            <div><strong>02</strong><span>Un unico referente</span></div>
-            <div><strong>03</strong><span>Tempi concordati</span></div>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="hero-card-top">
-            <span>GRUPPO GEOS</span>
-            <strong>Edilizia su misura</strong>
-          </div>
-          <div class="hero-card-body">
-            <p>Dalla demolizione alle finiture, coordiniamo ogni fase del lavoro.</p>
-            <ul>
-              <li>Ristrutturazioni complete</li>
-              <li>Bagni e cucine</li>
-              <li>Cartongesso e controsoffitti</li>
-              <li>Imbiancature e facciate</li>
-              <li>Manutenzioni e ripristini</li>
-            </ul>
-          </div>
-        </aside>
       </div>
-    </section>
 
-    <section class="section intro" id="azienda">
-      <div class="container two-col">
-        <div>
-          <span class="section-kicker">CHI SIAMO</span>
-          <h2>Un’impresa edile pensata per gestire il lavoro dall’inizio alla fine.</h2>
-        </div>
-        <div class="intro-copy">
-          <p>
-            Seguiamo interventi di ristrutturazione e manutenzione con un approccio
-            pratico, ordinato e trasparente. Il nostro obiettivo è semplificare il
-            cantiere per il cliente, coordinando lavorazioni, materiali e tempi.
-          </p>
-          <p>
-            Lavoriamo per privati, aziende, attività ricettive e condomini, con
-            soluzioni personalizzate in base alle reali esigenze dello spazio.
-          </p>
-          <a href="#contatti" class="text-link">Parla con noi →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section services" id="servizi">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">I NOSTRI SERVIZI</span>
-            <h2>Competenze coordinate per un risultato completo.</h2>
-          </div>
-          <p>Dagli interventi rapidi alle ristrutturazioni complete, gestiamo il cantiere con un unico interlocutore.</p>
-        </div>
-
-        <div class="service-grid">
-          <article class="service-card">
-            <span class="num">01</span>
-            <h3>Ristrutturazioni complete</h3>
-            <p>Appartamenti, uffici e locali: demolizioni, ricostruzioni, finiture e coordinamento delle lavorazioni.</p>
-          </article>
-          <article class="service-card">
-            <span class="num">02</span>
-            <h3>Bagni e cucine</h3>
-            <p>Rifacimento completo, impermeabilizzazioni, rivestimenti, predisposizioni e finiture.</p>
-          </article>
-          <article class="service-card">
-            <span class="num">03</span>
-            <h3>Cartongesso</h3>
-            <p>Pareti, controsoffitti, velette, nicchie, librerie e soluzioni su misura.</p>
-          </article>
-          <article class="service-card">
-            <span class="num">04</span>
-            <h3>Imbiancature e facciate</h3>
-            <p>Preparazione fondi, rasature, tinteggiature interne ed esterne e ripristino superfici.</p>
-          </article>
-          <article class="service-card">
-            <span class="num">05</span>
-            <h3>Manutenzioni</h3>
-            <p>Riparazioni, crepe, intonaci, silicone, piccoli interventi edili e ripristini rapidi.</p>
-          </article>
-          <article class="service-card">
-            <span class="num">06</span>
-            <h3>Soluzioni chiavi in mano</h3>
-            <p>Organizzazione del lavoro, materiali, fornitori e controllo delle fasi fino alla consegna finale.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section method" id="metodo">
-      <div class="container">
-        <span class="section-kicker light">IL NOSTRO METODO</span>
-        <div class="method-grid">
-          <div>
-            <h2>Dal sopralluogo alla consegna, sai sempre cosa succede.</h2>
-          </div>
-          <div class="steps">
-            <div class="step"><span>01</span><div><h3>Sopralluogo</h3><p>Valutiamo lo spazio, le esigenze e le priorità.</p></div></div>
-            <div class="step"><span>02</span><div><h3>Preventivo</h3><p>Definiamo lavorazioni, costi e tempi in modo chiaro.</p></div></div>
-            <div class="step"><span>03</span><div><h3>Esecuzione</h3><p>Coordiniamo il cantiere e manteniamo il cliente aggiornato.</p></div></div>
-            <div class="step"><span>04</span><div><h3>Consegna</h3><p>Controllo finale e consegna del lavoro completato.</p></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section projects" id="progetti">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">PROGETTI</span>
-            <h2>Il lavoro parla attraverso i dettagli.</h2>
-          </div>
-          <p>Questa sezione è pronta per inserire le foto dei tuoi cantieri reali.</p>
-        </div>
-
-        <div class="project-grid">
-          <article class="project-card project-a" style="background-image:url('https://images.unsplash.com/photo-1504615755583-2916b52192a3?auto=format&fit=crop&w=1200&q=85')">
-            <div class="project-card-socials" aria-label="Social Appartamento">
-              <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
-              <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
-            </div>
-            <div class="project-label"><span>Ristrutturazione</span><strong>Appartamento</strong></div>
-          </article>
-          <article class="project-card project-b" style="background-image:url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85')">
-            <div class="project-card-socials" aria-label="Social Bagno">
-              <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
-              <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
-            </div>
-            <div class="project-label"><span>Restyling</span><strong>Bagno</strong></div>
-          </article>
-          <article class="project-card project-c" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85')">
-            <div class="project-card-socials" aria-label="Social Interni">
-              <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Instagram Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
-              <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" aria-label="Apri Facebook Gruppo GEOS"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>Facebook</a>
-            </div>
-            <div class="project-label"><span>Finiture</span><strong>Interni</strong></div>
-          </article>
-        </div>
-        <div class="project-socials" aria-label="Seguici sui social" style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px">
-          <a class="instagram-link" href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid #cad0d2;color:#203342;font-size:13px;font-weight:800">
-            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            Instagram
-          </a>
-          <a class="facebook-link" href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid #cad0d2;color:#203342;font-size:13px;font-weight:800">
-            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-3.31 0-5 1.79-5 5v3H6v4h3v4h4v-4h3.2l.8-4H13V9c0-.67.33-1 1-1Z"/></svg>
-            Facebook
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section trust">
-      <div class="container trust-grid">
-        <div class="trust-big">
-          <span class="section-kicker">PERCHÉ GEOS</span>
-          <h2>Professionalità concreta, senza complicazioni inutili.</h2>
-        </div>
-        <div class="trust-list">
-          <div><strong>Chiarezza</strong><span>Preventivi comprensibili e lavorazioni definite.</span></div>
-          <div><strong>Affidabilità</strong><span>Organizzazione del cantiere e rispetto degli accordi.</span></div>
-          <div><strong>Qualità</strong><span>Attenzione alle finiture e ai materiali impiegati.</span></div>
-          <div><strong>Presenza</strong><span>Un referente diretto durante tutto il lavoro.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contatti">
-      <div class="container contact-wrap">
-        <div class="contact-copy">
-          <span class="section-kicker light">CONTATTI</span>
-          <h2>Hai un progetto da realizzare?</h2>
-          <p>Raccontaci cosa vuoi fare. Ti ricontatteremo per organizzare un sopralluogo e preparare una proposta su misura.</p>
-
-          <div class="contact-details">
-            <p><span>Telefono Aiet</span><strong>+39 331 702 6234</strong></p>
-            <p><span>Telefono Musa</span><strong>+39 389 888 3634</strong></p>
-            <p><span>Email</span><strong>info@gruppogeos.it</strong></p>
-            <p><span>Zona operativa</span><strong>Firenze e provincia</strong></p>
-          </div>
-        </div>
-
-        <form class="contact-form" action="https://formsubmit.co/zenitsoluzioni@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Nuova richiesta dal sito Gruppo GEOS">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_next" value="https://doci-git.github.io/GEOS/thanks.html">
-          <div class="field-row">
-            <label>Nome
-              <input type="text" name="nome" placeholder="Il tuo nome" required>
-            </label>
-            <label>Telefono
-              <input type="tel" name="telefono" placeholder="+39" required>
-            </label>
-          </div>
-          <label>Email
-            <input type="email" name="email" placeholder="nome@email.it" required>
-          </label>
-          <label>Tipo di lavoro
-            <select name="tipo_lavoro" required>
-              <option>Ristrutturazione completa</option>
-              <option>Bagno / Cucina</option>
-              <option>Cartongesso</option>
-              <option>Imbiancatura / Facciata</option>
-              <option>Manutenzione</option>
-              <option>Altro</option>
-            </select>
-          </label>
-          <label>Descrivi il progetto
-            <textarea name="progetto" rows="5" placeholder="Scrivi qui qualche dettaglio..." required></textarea>
-          </label>
-          <button class="btn btn-primary btn-full" type="submit">Invia richiesta</button>
-          <small>Ti ricontatteremo al più presto per parlare del tuo progetto.</small>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img src="assets/logo-geos.png" alt="Gruppo GEOS">
-      </div>
       <div>
-        <strong>Gruppo GEOS</strong>
-        <p>Costruiamo valore, progettiamo il futuro.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#servizi">Servizi</a>
-        <a href="#azienda">Azienda</a>
-        <a href="#contatti">Contatti</a>
+        <h4>Contatti</h4>
+        <a href="tel:+393317026234">Aiet · +39 331 702 6234</a>
+        <a href="tel:+393898883634">Musa · +39 389 888 3634</a>
+        <a href="mailto:info@gruppogeos.it">info@gruppogeos.it</a>
+        <a href="https://www.instagram.com/gruppogeos/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/gruppogeos/" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <span>© 2026 Gruppo GEOS. Tutti i diritti riservati.</span>
-      <span>P.IVA:</span>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Gruppo GEOS. Tutti i diritti riservati.</span>
+      <span>P.IVA: INSERIRE · Privacy Policy · Cookie Policy</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <a class="whatsapp" href="#contatti" aria-label="Contattaci">
-    <span>Contattaci</span>
-  </a>
+<a class="wa-floating"
+   href="https://wa.me/393898883634?text=Ciao%20Gruppo%20GEOS,%20vorrei%20informazioni%20per%20un%20lavoro."
+   target="_blank" rel="noopener" aria-label="Contatta Gruppo GEOS su WhatsApp">
+  WhatsApp
+</a>
 
-  <script src="script.js"></script>
+<script>
+  const WHATSAPP_NUMBER = "393898883634";
+
+  function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("open");
+  }
+
+  document.querySelectorAll("#navLinks a").forEach(link=>{
+    link.addEventListener("click",()=>{
+      document.getElementById("navLinks").classList.remove("open");
+    });
+  });
+
+  document.querySelectorAll(".faq-q").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const item = button.parentElement;
+      item.classList.toggle("active");
+      button.querySelector("span").textContent = item.classList.contains("active") ? "−" : "+";
+    });
+  });
+
+  document.getElementById("quoteForm").addEventListener("submit",function(e){
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const servizio = document.getElementById("servizio").value;
+    const zona = document.getElementById("zona").value.trim();
+    const descrizione = document.getElementById("descrizione").value.trim();
+
+    const message =
+`Ciao Gruppo GEOS, vorrei richiedere informazioni per un lavoro.
+
+Nome: ${nome}
+Telefono: ${telefono}
+Email: ${email || "Non indicata"}
+Tipo di lavoro: ${servizio}
+Zona: ${zona || "Non indicata"}
+
+Descrizione:
+${descrizione || "Da definire"}
+
+Vorrei essere ricontattato per valutare il lavoro.`;
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+
+  document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+
 </body>
 </html>
