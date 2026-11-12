@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1824" />
+  <title>GEOS Care | Manutenzione in abbonamento a Firenze</title>
+  <meta name="description" content="GEOS Care è il servizio di manutenzione in abbonamento di Gruppo GEOS per case, B&B, affitti turistici e immobili a Firenze. Un unico referente, controlli programmati e priorità negli interventi." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0d1824;
+      --navy-2:#132537;
+      --navy-3:#1c3247;
+      --gold:#c99b46;
+      --gold-2:#e1bd72;
+      --cream:#f6f2ea;
+      --paper:#fbfaf7;
+      --ink:#12202d;
+      --muted:#697784;
+      --line:#dde2e6;
+      --white:#fff;
+      --green:#25a26b;
+      --shadow:0 22px 60px rgba(9,22,34,.11);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+    .container{width:min(1180px,92%);margin:auto}
+
+    .topbar{background:var(--navy);color:#dbe3ea;font-size:12px;letter-spacing:.02em}
+    .topbar .container{height:34px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .topbar strong{color:var(--gold-2);font-weight:700}
+
+    header{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(221,226,230,.8)}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo-wrap{display:flex;align-items:center;gap:14px;min-width:190px}
+    .logo-wrap img{height:58px;width:auto;object-fit:contain}
+    .care-tag{font:700 10px/1 Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border-left:1px solid #d7d9db;padding-left:14px}
+    .navlinks{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600;color:#3f4b56}
+    .navlinks a{position:relative}
+    .navlinks a:after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:2px;background:var(--gold);transition:.2s}
+    .navlinks a:hover:after{width:100%}
+    .menu-btn{display:none;border:0;background:transparent;width:42px;height:42px;cursor:pointer;font-size:22px;color:var(--navy)}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 21px;border-radius:12px;font-weight:700;font-size:14px;border:1px solid transparent;transition:.2s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-dark{background:var(--navy);color:#fff;box-shadow:0 10px 24px rgba(13,24,36,.13)}
+    .btn-gold{background:var(--gold);color:#111820}
+    .btn-light{background:#fff;color:var(--navy);border-color:#e4e7e9}
+    .btn-outline-light{color:#fff;border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.06)}
+    .btn-wa{background:#1f9d66;color:white}
+
+    .hero{position:relative;overflow:hidden;background:var(--cream);padding:0}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(13,24,36,.035),transparent 45%),radial-gradient(circle at 82% 18%,rgba(201,155,70,.13),transparent 28%)}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.06fr .94fr;min-height:690px;align-items:stretch}
+    .hero-copy{padding:88px 60px 78px 0;display:flex;flex-direction:column;justify-content:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7a5a22;margin-bottom:20px}
+    .eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
+    h1,h2,h3{font-family:Manrope,sans-serif;margin:0}
+    h1{font-size:clamp(46px,5.8vw,76px);line-height:1.01;letter-spacing:-3.2px;max-width:760px}
+    h1 em{font-style:normal;color:var(--gold)}
+    .lead{font-size:18px;color:#5f6c77;max-width:670px;margin:24px 0 30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-proof{display:flex;gap:28px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid rgba(13,24,36,.12)}
+    .proof-item strong{display:block;font:800 19px Manrope,sans-serif;color:var(--navy)}
+    .proof-item span{font-size:12px;color:#6f7c86}
+
+    .hero-visual{position:relative;background:linear-gradient(145deg,var(--navy),#1b3043);min-height:690px;overflow:hidden}
+    .hero-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(201,155,70,.13)),repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 34px)}
+    .architecture{position:absolute;inset:0}
+    .arch-line{position:absolute;border:1px solid rgba(255,255,255,.11)}
+    .arch-a{width:72%;height:64%;right:-5%;top:10%;transform:skewY(-8deg)}
+    .arch-b{width:58%;height:48%;right:17%;top:27%;border-color:rgba(201,155,70,.35)}
+    .arch-c{width:38%;height:26%;right:36%;top:46%;background:rgba(255,255,255,.025)}
+    .visual-content{position:absolute;left:42px;right:42px;bottom:42px;color:#fff;z-index:2}
+    .visual-kicker{font-size:11px;letter-spacing:.16em;color:var(--gold-2);font-weight:800;text-transform:uppercase;margin-bottom:11px}
+    .visual-content h3{font-size:34px;line-height:1.08;max-width:430px}
+    .visual-content p{color:#c5d0d9;max-width:440px;margin:12px 0 0;font-size:14px}
+    .floating-card{position:absolute;top:44px;left:42px;z-index:2;background:#fff;color:var(--navy);border-radius:18px;padding:18px 20px;width:240px;box-shadow:var(--shadow)}
+    .floating-card small{display:block;text-transform:uppercase;letter-spacing:.12em;color:#8a6a2c;font-weight:800;font-size:10px;margin-bottom:5px}
+    .floating-card strong{font:800 31px Manrope,sans-serif}
+    .floating-card span{font-size:12px;color:#74808a}
+
+    section{padding:92px 0}
+    .section-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#8b6828;margin-bottom:12px}
+    .section-title{font-size:clamp(34px,4.4vw,53px);line-height:1.08;letter-spacing:-2px;max-width:860px}
+    .section-sub{font-size:17px;color:var(--muted);max-width:760px;margin:17px 0 0}
+
+    .why-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:58px;align-items:start}
+    .why-sticky{position:sticky;top:128px}
+    .features{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .feature{background:#fff;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:220px}
+    .icon-box{width:43px;height:43px;border-radius:12px;background:#f3ede1;color:#8b6828;display:grid;place-items:center;font-weight:800;margin-bottom:22px}
+    .feature h3{font-size:18px;margin-bottom:8px}
+    .feature p{font-size:14px;color:var(--muted);margin:0}
+
+    .check-strip{background:var(--navy);color:#fff;padding:34px 0}
+    .check-strip .container{display:grid;grid-template-columns:1.4fr repeat(3,.7fr);gap:26px;align-items:center}
+    .check-strip h3{font-size:22px}
+    .check-strip h3 span{color:var(--gold-2)}
+    .check-stat{padding-left:22px;border-left:1px solid rgba(255,255,255,.15)}
+    .check-stat strong{display:block;color:var(--gold-2);font:800 18px Manrope,sans-serif}
+    .check-stat small{color:#aebac4}
+
+    .plans-section{background:#101b27;color:#fff;position:relative;overflow:hidden}
+    .plans-section:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(201,155,70,.08);right:-220px;top:-220px}
+    .plans-section .section-sub{color:#b8c2cb}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px;position:relative}
+    .plan{background:#162431;border:1px solid #2a3b4a;border-radius:22px;padding:28px;display:flex;flex-direction:column;min-height:520px}
+    .plan.featured{background:#fff;color:var(--navy);border-color:#fff;box-shadow:0 28px 65px rgba(0,0,0,.23);transform:translateY(-8px)}
+    .plan-top{display:flex;justify-content:space-between;align-items:start;gap:15px}
+    .plan h3{font-size:23px}
+    .tag{font-size:9px;font-weight:800;letter-spacing:.12em;background:var(--gold);color:#15202b;border-radius:999px;padding:6px 9px}
+    .price{font:800 44px Manrope,sans-serif;letter-spacing:-2px;margin:18px 0 0}
+    .price small{font:600 12px Inter,sans-serif;color:#8e9ba6;letter-spacing:0}
+    .plan-desc{font-size:13px;color:#aeb9c3;margin:8px 0 22px;min-height:40px}
+    .featured .plan-desc{color:#6d7983}
+    .plan ul{list-style:none;margin:0 0 28px;padding:20px 0 0;border-top:1px solid rgba(255,255,255,.12);display:grid;gap:12px;font-size:13px;flex:1}
+    .featured ul{border-color:#e6e8ea}
+    .plan li{display:flex;gap:9px}
+    .plan li:before{content:"✓";color:var(--gold-2);font-weight:900}
+    .featured li:before{color:#8c6829}
+    .plan .btn{width:100%}
+    .fine{font-size:11px;color:#8e9aa5;margin-top:24px}
+
+    .care-intro{background:var(--paper)}
+    .care-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:58px;align-items:start}
+    .care-panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow)}
+    .care-panel h3{font-size:23px;margin-bottom:18px}
+    .care-list,.issue-list,.included-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+    .care-list li,.issue-list li,.included-list li{display:flex;gap:11px;align-items:flex-start;font-size:14px}
+    .care-list li:before,.included-list li:before{content:"✓";color:#24825e;font-weight:900}
+    .care-note{font-size:12px;color:var(--muted);margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+    .issue-section{background:var(--cream)}
+    .issue-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+    .issue{background:#fff;border:1px solid rgba(221,226,230,.9);border-radius:16px;padding:20px 18px;font-size:14px;font-weight:700;min-height:94px;display:flex;align-items:center;gap:12px}
+    .issue b{font-size:25px;font-weight:400}
+    .issue-note{color:var(--muted);font-size:13px;margin:22px 0 0}
+    .included-section{background:#fff}
+    .included-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+    .included-card{border-radius:22px;padding:30px;background:#f4faf7;border:1px solid #d8eee2}
+    .included-card.excluded{background:#fbf7ee;border-color:#eee0c5}
+    .included-card h3{font-size:21px;margin-bottom:20px}
+    .included-card.excluded .included-list li:before{content:"–";color:#a9781f}
+    .trust{background:var(--navy);color:#fff}
+    .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .trust .section-sub{color:#bdc7cf}
+    .trust-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+    .trust-point{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:18px;color:#d7e0e6;font-size:13px}
+    .trust-visual{min-height:320px;border:1px solid rgba(201,155,70,.4);border-radius:24px;background:linear-gradient(145deg,#1c3447,#10202e);display:grid;place-items:center;text-align:center;padding:30px}
+    .trust-visual strong{display:block;color:var(--gold-2);font:800 46px Manrope,sans-serif;letter-spacing:-2px}
+    .trust-visual span{display:block;color:#d3dce3;margin-top:8px}
+    .business{background:var(--cream)}
+    .business-shell{background:#fff;border-radius:28px;padding:42px 48px;display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+    .business-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0;margin:0 0 28px}
+    .business-list li:before{content:"✓";color:#24825e;font-weight:900;margin-right:9px}
+    .wa-sticky{display:none}
+
+    .how-grid{display:grid;grid-template-columns:1fr 1fr;gap:62px;align-items:center}
+    .steps{margin-top:32px;border-left:1px solid #d7dade}
+    .step{position:relative;padding:2px 0 28px 34px}
+    .step:last-child{padding-bottom:0}
+    .step:before{content:"";position:absolute;width:11px;height:11px;border-radius:50%;background:var(--gold);left:-6px;top:7px;box-shadow:0 0 0 6px var(--paper)}
+    .step small{font-weight:800;color:#9a7531;letter-spacing:.1em;text-transform:uppercase}
+    .step h3{font-size:19px;margin:4px 0 5px}
+    .step p{font-size:14px;color:var(--muted);margin:0;max-width:510px}
+    .check-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:var(--shadow)}
+    .check-card-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:10px}
+    .check-card-head img{height:50px;width:auto}
+    .status{font-size:10px;font-weight:800;color:#177b54;background:#eaf7f1;padding:7px 9px;border-radius:999px}
+    .row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:15px 0;border-bottom:1px solid #edf0f1;font-size:13px}
+    .row:last-child{border-bottom:0}
+    .row strong{font-weight:700}
+    .ok{color:#24825e;font-weight:700}.warn{color:#a9781f;font-weight:700}
+
+    .host{padding-top:10px}
+    .host-shell{background:var(--cream);border-radius:30px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+    .host-visual{position:relative;min-height:540px;background:linear-gradient(145deg,#0e1d2b,#233c52);overflow:hidden}
+    .host-visual:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0,transparent 44px,rgba(255,255,255,.035) 45px,transparent 46px)}
+    .host-number{position:absolute;left:36px;top:34px;color:rgba(255,255,255,.06);font:800 140px Manrope,sans-serif;line-height:1}
+    .host-card{position:absolute;left:42px;right:42px;bottom:42px;z-index:2;color:#fff}
+    .host-card .section-kicker{color:var(--gold-2)}
+    .host-card h3{font-size:39px;line-height:1.08;max-width:480px}
+    .host-card p{color:#c5d0d9;max-width:480px}
+    .host-copy{padding:52px;display:flex;flex-direction:column;justify-content:center}
+    .host-copy .section-title{font-size:38px}
+    .host-benefits{display:grid;gap:12px;margin:26px 0}
+    .host-benefit{display:flex;gap:13px;align-items:flex-start}
+    .host-benefit i{font-style:normal;color:#8c6829;font-weight:900}
+    .host-benefit strong{display:block;font-size:14px}.host-benefit span{font-size:13px;color:var(--muted)}
+
+    .faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:58px}
+    .faq-list{display:grid;gap:12px}
+    details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+    summary{cursor:pointer;font-weight:700;font-size:14px;list-style:none;display:flex;justify-content:space-between;gap:14px}
+    summary:after{content:"+";color:#95702e;font-size:20px;line-height:1}
+    details[open] summary:after{content:"−"}
+    details p{color:var(--muted);font-size:13px;margin:12px 0 2px}
+
+    .cta-shell{background:var(--navy);color:#fff;border-radius:30px;padding:48px;position:relative;overflow:hidden}
+    .cta-shell:before{content:"";position:absolute;width:280px;height:280px;border:1px solid rgba(201,155,70,.25);border-radius:50%;right:-80px;top:-120px}
+    .cta-grid{position:relative;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+    .cta-shell .section-kicker{color:var(--gold-2)}
+    .cta-shell h2{font-size:clamp(33px,4.2vw,52px);line-height:1.07;max-width:780px}
+    .cta-shell p{color:#bdc7cf;max-width:680px;margin:14px 0 0}
+    .cta-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+
+    footer{background:#0a131d;color:#8f9ca7;margin-top:92px}
+    .footer-main{display:grid;grid-template-columns:1.4fr repeat(2,.7fr);gap:36px;padding:48px 0 34px}
+     .footer-logo img{height:66px;/*filter:brightness(1) invert(1)*/;opacity:.92} 
+    .footer-logo p{font-size:12px;max-width:340px;color:#8f9ca7}
+    .footer-col h4{font:700 13px Manrope,sans-serif;color:#fff;margin:0 0 12px}
+    .footer-col a,.footer-col span{display:block;font-size:12px;margin:7px 0;color:#9ca8b1}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:18px 0 25px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px}
+
+    .mobile-panel{display:none}
+
+    @media(max-width:980px){
+      .navlinks{display:none}.menu-btn{display:block}.nav .btn-dark{display:none}
+      .hero-grid,.why-grid,.how-grid,.host-shell,.faq-grid,.care-grid,.trust-grid,.business-shell{grid-template-columns:1fr}
+      .hero-copy{padding:68px 0 54px}.hero-visual{min-height:520px}
+      .why-sticky{position:static}.check-strip .container{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr}.plan.featured{transform:none}.plan{min-height:auto}.issue-grid{grid-template-columns:1fr 1fr}
+      .cta-grid,.footer-main{grid-template-columns:1fr}.cta-actions{justify-content:flex-start}
+      .mobile-panel{display:none;position:fixed;inset:116px 0 0;background:var(--paper);z-index:45;padding:28px 4%;overflow:auto}
+      .mobile-panel.show{display:block}.mobile-panel a{display:block;padding:16px 0;border-bottom:1px solid var(--line);font-weight:700}.mobile-panel .btn{margin-top:22px;border:0}
+    }
+    @media(max-width:640px){
+      .topbar .container span:last-child{display:none}.nav{height:74px}.logo-wrap img{height:48px}.care-tag{display:none}
+      h1{letter-spacing:-2px}.hero-copy{padding-top:52px}.hero-visual{min-height:470px}.floating-card{left:24px;top:26px}.visual-content{left:24px;right:24px;bottom:28px}.visual-content h3{font-size:29px}
+      section{padding:70px 0}.features{grid-template-columns:1fr}.check-strip .container{grid-template-columns:1fr}.check-stat{padding:12px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.12)}
+      .host-copy{padding:32px 26px}.host-visual{min-height:450px}.host-card{left:26px;right:26px;bottom:28px}.host-card h3{font-size:31px}.included-grid,.trust-points,.business-list{grid-template-columns:1fr}.business-shell{padding:30px 26px}
+      .cta-shell{padding:34px 26px}.cta-actions .btn{width:100%}.hero-actions .btn{width:100%}.footer-main{padding-top:38px}
+      .issue-grid{grid-template-columns:1fr 1fr;gap:9px}.issue{padding:15px 12px;min-height:80px;font-size:12px}.issue b{font-size:21px}
+      .wa-sticky{display:flex;position:fixed;right:16px;bottom:16px;z-index:40;width:54px;height:54px;border-radius:50%;align-items:center;justify-content:center;background:var(--green);color:#fff;font-size:24px;box-shadow:0 8px 22px rgba(0,0,0,.2)}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container"><span><strong>GEOS</strong> · Ristrutturazioni e manutenzioni</span><span>Firenze e provincia</span></div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="logo-wrap" href="#top" aria-label="GEOS Care">
+        <img src="./assets/logo.png" alt="GEOS Care" />
+        <span class="care-tag">GEOS Care</span>
+      </a>
+      <nav class="navlinks" aria-label="Navigazione principale">
+        <a href="#vantaggi">Vantaggi</a><a href="#piani">Piani</a><a href="#come-funziona">Come funziona</a><a href="#host">Per Host</a><a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-dark" href="#contatti">Parla con GEOS</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Apri menu">☰</button>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#vantaggi">Vantaggi</a><a href="#piani">Piani</a><a href="#come-funziona">Come funziona</a><a href="#host">Per Host</a><a href="#faq">FAQ</a>
+    <a class="btn btn-dark" href="#contatti">Parla con GEOS</a>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Assistenza tecnica continuativa · Firenze</div>
+          <h1>Un problema in casa?<br><em>Sai già chi chiamare.</em></h1>
+          <p class="lead">Con <strong>GEOS Care</strong> hai un unico referente per la manutenzione della tua casa, tutto l'anno. Quando serve assistenza, contatti GEOS e pensiamo noi al tecnico.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#contatti">Scopri GEOS Care</a>
+            <a class="btn btn-light" href="#come-funziona">Come funziona</a>
+          </div>
+          <div class="hero-proof">
+            <div class="proof-item"><strong>✓ Veri tecnici</strong><span>a tua disposizione</span></div>
+            <div class="proof-item"><strong>✓ Tutto l'anno</strong><span>assistenza continuativa</span></div>
+            <div class="proof-item"><strong>✓ Firenze</strong><span>e provincia</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="GEOS Care, servizio di manutenzione">
+          <div class="architecture"><div class="arch-line arch-a"></div><div class="arch-line arch-b"></div><div class="arch-line arch-c"></div></div>
+          <div class="floating-card"><small>La tua casa</small><strong>SEMPRE</strong><br><span>assistita da GEOS</span></div>
+          <div class="visual-content"><div class="visual-kicker">GEOS · Care</div><h3>La tua casa. Sempre assistita.</h3><p>Un servizio di manutenzione e assistenza tecnica in abbonamento, con veri tecnici sul territorio.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vantaggi">
+      <div class="container why-grid">
+        <div class="why-sticky">
+          <div class="section-kicker">Perché GEOS Care</div>
+          <h2 class="section-title">Meno emergenze. Più controllo sul tuo immobile.</h2>
+          <p class="section-sub">GEOS Care nasce per chi vuole evitare telefonate, ricerche dell'ultimo minuto e piccoli problemi lasciati peggiorare nel tempo.</p>
+        </div>
+        <div class="features">
+          <article class="feature"><div class="icon-box">01</div><h3>Un unico referente</h3><p>Hai sempre la stessa impresa di riferimento, senza dover ricominciare ogni volta da zero.</p></article>
+          <article class="feature"><div class="icon-box">02</div><h3>Priorità negli interventi</h3><p>Le richieste dei clienti GEOS Care seguono un canale dedicato e vengono pianificate con priorità.</p></article>
+          <article class="feature"><div class="icon-box">03</div><h3>Prevenzione</h3><p>I controlli programmati aiutano a individuare usura, piccole perdite e criticità prima che diventino problemi maggiori.</p></article>
+          <article class="feature"><div class="icon-box">04</div><h3>Assistenza semplice</h3><p>Invii foto o video su WhatsApp. Valutiamo il problema e organizziamo l'intervento adatto.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="care-intro" id="check">
+      <div class="container care-grid">
+        <div><div class="section-kicker">GEOS Check</div><h2 class="section-title">Prevenire costa meno che riparare.</h2><p class="section-sub">Con il GEOS Check controlliamo periodicamente i principali punti dell'immobile per individuare piccoli problemi prima che diventino interventi più importanti.</p><ul class="care-list" style="margin-top:24px"><li>Rubinetteria e perdite visibili</li><li>Silicone e sigillature</li><li>Sanitari</li><li>Porte e finestre</li><li>Scarichi</li><li>Pareti e segni di infiltrazioni</li><li>Piccoli problemi di manutenzione generale</li></ul></div>
+        <div class="check-card"><div class="check-card-head"><img src="./assets/logo.png" alt="Gruppo GEOS"><span class="status">REPORT GEOS CHECK</span></div><div class="row"><strong>Rubinetteria e perdite visibili</strong><span class="ok">✓ OK</span></div><div class="row"><strong>Silicone e sigillature</strong><span class="warn">⚠ Da controllare</span></div><div class="row"><strong>Porte e finestre</strong><span class="ok">✓ OK</span></div><div class="row"><strong>Scarichi</strong><span class="warn">🔧 Da sistemare</span></div><div class="row"><strong>Pareti e infiltrazioni</strong><span class="ok">✓ OK</span></div></div>
+      </div>
+    </section>
+
+    <div class="check-strip">
+      <div class="container">
+        <h3><span>GEOS Check</span><br>Il controllo periodico che fa la differenza.</h3>
+        <div class="check-stat"><strong>Bagno</strong><small>silicone, scarichi, rubinetteria</small></div>
+        <div class="check-stat"><strong>Infissi</strong><small>chiusure, maniglie, regolazioni</small></div>
+        <div class="check-stat"><strong>Immobile</strong><small>crepe, umidità, ripristini</small></div>
+      </div>
+    </div>
+
+    <section class="plans-section" id="piani">
+      <div class="container">
+        <div class="section-kicker">Piani GEOS Care</div>
+        <h2 class="section-title">La tua casa, sempre assistita.</h2>
+        <p class="section-sub">Scegli il livello di assistenza tecnica più adatto al tuo immobile. Le ore sono una condizione del servizio, non il motivo per cui resti senza un referente.</p>
+        <div class="plans">
+          <article class="plan">
+            <div class="plan-top"><h3>Care Privati</h3></div>
+            <div class="plan-desc">La tua casa sempre assistita. Un punto di riferimento affidabile per la manutenzione della tua casa.</div>
+            <ul><li>Assistenza GEOS tutto l'anno</li><li>Un unico referente</li><li>Supporto WhatsApp</li><li>GEOS Check prevenzione programmato</li><li>Interventi Care previsti</li><li>Tariffe riservate sui lavori extra</li></ul>
+            <div class="price">49€ <small>/mese IVA inclusa</small></div>
+            <!-- <div class="fine">Il piano comprende fino a 3 ore annue di piccole manutenzioni. Materiali, ricambi e lavorazioni complesse sono esclusi.</div> -->
+            <a class="btn btn-outline-light" href="#contatti" data-plan="Care">Scopri il piano adatto a te</a>
+          </article>
+          <article class="plan featured">
+            <div class="plan-top"><h3>Care Host</h3><!--<span class="tag"></span>--></div>
+            <div class="plan-desc">Per B&B, affitti turistici e piccoli property manager.</div>
+            <ul><li>Assistenza GEOS tutto l'anno</li><li>Un unico referente</li><li>Supporto WhatsApp</li><li>Priorità sugli interventi</li><li>GEOS Check prevenzione programmato</li><li>Interventi tra check-out e check-in</li><li>Tariffe riservate sui lavori extra</li></ul>
+            <div class="price">79€ <small>/mese IVA inclusa</small></div>
+            <!-- <div class="fine">Il piano comprende fino a 6 ore annue di piccole manutenzioni. Materiali, ricambi e lavorazioni complesse sono esclusi e vengono preventivati separatamente.</div> -->
+            <a class="btn btn-gold" href="#host" data-plan="Care Plus">Scopri GEOS Care Host</a>
+          </article>
+          <article class="plan">
+            <div class="plan-top"><h3>Care Condomini</h3></div>
+            <div class="plan-desc">Edifici e parti comuni</div>
+            <ul><li>Unico referente operativo</li><li>Supporto WhatsApp</li><li>Priorità alta</li><li>GEOS Check prevenzione programmato</li><li>Interventi Care previsti</li><li>Tariffe dedicate sui lavori extra</li></ul>
+            <div class="price">119€ <small>/mese + IVA</small></div>
+            <div class="fine">Monte ore e condizioni vengono personalizzati in base agli immobili gestiti.</div>
+            <a class="btn btn-outline-light" href="#contatti" data-plan="Care Host">Scopri GEOS Care Condominio</a>
+          </article>
+        </div>
+        <div class="fine">Servizio di assistenza e manutenzione in abbonamento, soggetto a condizioni contrattuali, area di copertura, tipologia di immobile e disponibilità.</div>
+      </div>
+    </section>
+
+    <section class="care-intro">
+      <div class="container care-grid">
+        <div><div class="section-kicker">Il servizio GEOS Care</div><h2 class="section-title">Cos'è un Intervento Care?</h2><p class="section-sub">Quando hai un piccolo problema in casa, contatti GEOS. Organizziamo l'intervento di un tecnico e, se il problema può essere risolto nell'ambito del tuo piano, lo sistemiamo direttamente.</p></div>
+        <div class="care-panel"><h3>INTERVENTO CARE</h3><ul class="care-list"><li>Uscita del tecnico</li><li>Valutazione del problema</li><li>Manodopera entro il limite previsto dal piano</li><li>Risoluzione immediata quando tecnicamente possibile</li></ul><p class="care-note">Materiali, ricambi e lavori più complessi sono esclusi e vengono comunicati prima di procedere.</p></div>
+      </div>
+    </section>
+
+    <section class="issue-section">
+      <div class="container"><div class="section-kicker">Piccoli problemi, un solo referente</div><h2 class="section-title">Quando puoi chiamare GEOS Care?</h2><div class="issue-grid"><div class="issue"><b>💧</b>Rubinetto che perde</div><div class="issue"><b>🚪</b>Porta che non chiude bene</div><div class="issue"><b>🚿</b>Silicone della doccia deteriorato</div><div class="issue"><b>🧱</b>Piccolo ripristino murario</div><div class="issue"><b>🎨</b>Ritocco di una parete</div><div class="issue"><b>🔧</b>Sanitari da fissare o registrare</div><div class="issue"><b>⚡</b>Piccoli problemi elettrici</div><div class="issue"><b>🪛</b>Maniglie, mensole e fissaggi</div></div><p class="issue-note">Se l'intervento richiede lavori più importanti, GEOS effettua la valutazione e prepara un preventivo dedicato.</p></div>
+    </section>
+
+    <section id="come-funziona">
+      <div class="container how-grid">
+        <div>
+          <div class="section-kicker">Quando hai un problema</div>
+          <h2 class="section-title">Tu ci segnali il problema. Al resto pensiamo noi.</h2>
+          <div class="steps">
+            <div class="step"><small>01 · Segnala il problema</small><h3>Scrivi a GEOS</h3><p>Inviaci una foto o un video: ci aiuta a capire subito cosa sta succedendo.</p></div>
+            <div class="step"><small>02 · Valutiamo</small><h3>Capire l'intervento</h3><p>Cerchiamo di capire quale intervento è necessario e come gestirlo.</p></div>
+            <div class="step"><small>03 · Arriva il tecnico</small><h3>Organizziamo l'uscita</h3><p>Il tecnico arriva in base alla priorità prevista dal tuo piano.</p></div>
+            <div class="step"><small>04 · Problema risolto</small><h3>Interveniamo</h3><p>Se rientra nell'Intervento Care, procede direttamente. Per lavori più importanti ricevi un preventivo.</p></div>
+          </div>
+        </div>
+        <div class="check-card">
+          <div class="check-card-head"><img src="./assets/logo.png" alt=" GEOS"><span class="status">CHECK ESEGUITO</span></div>
+          <div class="row"><strong>Silicone box doccia</strong><span class="warn">Da monitorare</span></div>
+          <div class="row"><strong>Rubinetteria bagno</strong><span class="ok">OK</span></div>
+          <div class="row"><strong>Scarico lavabo</strong><span class="ok">OK</span></div>
+          <div class="row"><strong>Maniglia finestra</strong><span class="warn">Regolazione</span></div>
+          <div class="row"><strong>Segni di umidità</strong><span class="ok">Nessuno</span></div>
+          <div class="row"><strong>Ripristini pareti</strong><span class="warn">1 punto</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="included-section">
+      <div class="container"><div class="section-kicker">Trasparenza prima di tutto</div><h2 class="section-title">Cosa è incluso e cosa non è incluso.</h2><div class="included-grid"><div class="included-card"><h3>Incluso nel piano</h3><ul class="included-list"><li>Assistenza GEOS</li><li>Priorità secondo il piano</li><li>GEOS Check previsti</li><li>Interventi Care previsti</li><li>Manodopera entro i limiti indicati</li><li>Preventivi</li><li>Tariffe riservate sui lavori extra</li></ul></div><div class="included-card excluded"><h3>Non incluso</h3><ul class="included-list"><li>Materiali e ricambi</li><li>Lavorazioni superiori ai limiti del piano</li><li>Ristrutturazioni e opere importanti</li><li>Ponteggi o mezzi speciali</li><li>Interventi specialistici con certificazioni particolari</li><li>Danni o guasti che richiedono opere invasive</li></ul></div></div><p class="issue-note">Prima di qualsiasi costo extra, il cliente viene informato.</p></div>
+    </section>
+
+    <section class="trust">
+      <div class="container trust-grid"><div><div class="section-kicker">La squadra GEOS</div><h2 class="section-title">Dietro GEOS Care ci sono veri tecnici.</h2><p class="section-sub">GEOS Care nasce dall'esperienza di Gruppo GEOS nel settore delle manutenzioni e delle ristrutturazioni. Non sei affidato a un semplice call center: quando serve un intervento, organizziamo tecnici reali sul territorio.</p><div class="trust-points"><!--<div class="trust-point">Foto vere dei tecnici</div>--><div class="trust-point">Interventi sul territorio</div><div class="trust-point">Esperienza Gruppo GEOS</div><div class="trust-point">Operativi a Firenze e provincia</div></div></div><div class="trust-visual"><div><strong>GEOS</strong><span>Persone reali. Assistenza concreta.<br>Operativi a Firenze e provincia.</span></div></div></div>
+    </section>
+
+    <section class="host" id="host">
+      <div class="container host-shell">
+        <div class="host-visual">
+          <div class="host-number">24</div>
+          <div class="host-card"><div class="section-kicker">GEOS Care Host</div><h3>Il tuo manutentore a Firenze, senza avere un dipendente.</h3><p>Per chi gestisce appartamenti, camere o strutture ricettive e ha bisogno di un referente operativo affidabile.</p></div>
+        </div>
+        <div class="host-copy">
+          <div class="section-kicker">Per host e property manager</div>
+          <h2 class="section-title">Quando un ospite segnala un problema, sai già chi chiamare.</h2>
+          <p class="section-sub">Quando un ospite segnala un problema, non devi iniziare a cercare un tecnico disponibile. Scrivi a GEOS e ci occupiamo noi dell'intervento.</p>
+          <div class="host-benefits">
+            <div class="host-benefit"><i>✓</i><div><strong>Piccole riparazioni e ripristini</strong><span>Interventi pratici per mantenere l'alloggio operativo.</span></div></div>
+            <div class="host-benefit"><i>✓</i><div><strong>Controlli programmati</strong><span>Per ridurre inconvenienti prima del prossimo check-in.</span></div></div>
+            <div class="host-benefit"><i>✓</i><div><strong>Porte, serrature e soluzioni smart</strong><span>Supporto per accessi e piccole integrazioni domotiche.</span></div></div>
+            <div class="host-benefit"><i>✓</i><div><strong>Lavori importanti separati</strong><span>Per gli interventi più grandi ricevi un preventivo dedicato.</span></div></div>
+            <div class="host-benefit"><i>✓</i><div><strong>Manutenzione tra un soggiorno e l'altro</strong><span>Per mantenere l'immobile pronto e curato.</span></div></div>
+          </div>
+          <a class="btn btn-dark" href="#contatti" data-plan="Care Host">Scopri GEOS Care Host</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="business">
+      <div class="container"><div class="business-shell"><div><div class="section-kicker">Per property manager</div><h2 class="section-title">Gestisci più immobili?</h2><p class="section-sub">GEOS Care Business offre un unico referente per la manutenzione di più appartamenti, B&B e immobili.</p></div><div><ul class="business-list"><li>Unico contatto</li><li>Gestione centralizzata</li><li>Priorità</li><li>Report degli interventi</li><li>Monte ore personalizzabile</li><li>Tariffe dedicate</li></ul><a class="btn btn-dark" href="#contatti" data-plan="Care Business">Richiedi un piano Business</a></div></div></div>
+    </section>
+
+    <section id="faq">
+      <div class="container faq-grid">
+        <div><div class="section-kicker">FAQ</div><h2 class="section-title">Tutto chiaro prima di iniziare.</h2><p class="section-sub">Il servizio deve essere semplice anche nelle regole. Le condizioni definitive vengono sempre indicate nel contratto.</p></div>
+        <div class="faq-list">
+          <details><summary>GEOS Care è un'assicurazione?</summary><p>No. GEOS Care è un servizio di assistenza e manutenzione in abbonamento. Hai a disposizione una rete di tecnici e servizi secondo le condizioni del piano scelto.</p></details>
+          <details><summary>Cosa succede se il tecnico non riesce a risolvere il problema nell'ora inclusa?</summary><p>Il tecnico valuta l'intervento. Se servono più tempo, materiali o lavorazioni importanti, GEOS comunica il costo o prepara un preventivo prima di procedere.</p></details>
+          <details><summary>I materiali sono inclusi?</summary><p>No, salvo diversa indicazione. Materiali e ricambi vengono conteggiati separatamente.</p></details>
+          <details><summary>Posso chiamarvi anche dopo aver terminato gli interventi inclusi?</summary><p>Sì. Continui ad avere accesso a GEOS e alle tariffe riservate previste dal tuo piano.</p></details>
+          <details><summary>Posso usare GEOS Care per una ristrutturazione?</summary><p>I lavori importanti e le ristrutturazioni non sono compresi nell'abbonamento, ma i clienti GEOS Care possono richiedere un preventivo dedicato.</p></details>
+          <details><summary>Le ore non utilizzate si accumulano?</summary><p>Il monte ore è riferito alla durata annuale del contratto e, salvo diversa condizione sottoscritta, non passa all'annualità successiva.</p></details>
+          <details><summary>Posso usare le ore per una ristrutturazione?</summary><p>No. Le ore incluse sono dedicate a piccole manutenzioni. Ristrutturazioni e lavorazioni complesse vengono preventivate separatamente.</p></details>
+          <details><summary>In quali zone operate?</summary><p>Il servizio è pensato principalmente per Firenze e provincia. Per immobili fuori area verifichiamo disponibilità e condizioni dedicate.</p></details>
+          <details><summary>Quanto dura il contratto?</summary><p>La formula proposta è annuale, con pagamento mensile o annuale anticipato secondo le condizioni sottoscritte.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti">
+      <div class="container cta-shell">
+        <div class="cta-grid">
+          <div><div class="section-kicker">Inizia con GEOS Care</div><h2>Quando hai un problema in casa, sai già chi chiamare.</h2><p id="ctaText">Scrivici per verificare il servizio per il tuo immobile e capire quale piano GEOS Care è più adatto.</p></div>
+          <div class="cta-actions"><a class="btn btn-gold" href="mailto:info@gruppogeos.it" id="emailBtn">Verifica il servizio per il tuo immobile</a><a class="btn btn-wa" href="https://wa.me/3898883634?text=Ciao%20GEOS%2C%20vorrei%20informazioni%20su%20GEOS%20Care" target="_blank" rel="noopener" id="waBtn">Scrivici su WhatsApp</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-main">
+      <div class="footer-logo"><img src="./assets/logo.png" alt="GEOS"><p>GEOS<br>GEOS Care<br>Firenze e provincia<br>Servizio di manutenzione e assistenza tecnica in abbonamento.</p></div>
+      <div class="footer-col"><h4>GEOS Care</h4><a href="#piani">Piani</a><a href="#come-funziona">Come funziona</a><a href="#host">Care Host</a><a href="#faq">Domande frequenti</a></div>
+      <div class="footer-col"><h4>Contatti</h4><span>Firenze e provincia</span><span>P.IVA: dati societari disponibili su richiesta</span><a href="mailto:info@gruppogeos.it">Email: info@gruppogeos.it</a><a href="https://wa.me/39898883634" target="_blank" rel="noopener">WhatsApp: contatta GEOS</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Gruppo GEOS · Tutti i diritti riservati</span><span><a href="#">Privacy Policy</a> · <a href="#">Cookie Policy</a> · <a href="#">Termini del servizio</a></span></div>
+  </footer>
+  <a class="wa-sticky" href="https://wa.me/39898883634?text=Ciao%20GEOS%2C%20vorrei%20informazioni%20su%20GEOS%20Care" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">⌕</a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    menuBtn.addEventListener('click', () => {
+      const open = mobilePanel.classList.toggle('show');
+      document.body.classList.toggle('menu-open', open);
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+    mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobilePanel.classList.remove('show'); document.body.classList.remove('menu-open'); menuBtn.textContent='☰';
+    }));
+    document.querySelectorAll('[data-plan]').forEach(link => link.addEventListener('click', () => {
+      const plan = link.dataset.plan;
+      document.getElementById('ctaText').textContent = `Hai scelto ${plan}. Scrivici per verificare copertura, disponibilità e condizioni per il tuo immobile.`;
+      document.getElementById('emailBtn').href = `mailto:info@gruppogeos.it?subject=Informazioni ${encodeURIComponent(plan)}`;
+      document.getElementById('waBtn').href = `https://wa.me/39898883634?text=${encodeURIComponent('Ciao GEOS, vorrei informazioni sul piano ' + plan + '.')}`;
+    }));
+  </script>
+</body>
+</html>
